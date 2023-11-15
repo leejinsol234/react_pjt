@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import colorNames from '../../styles/Colors';
+
+const { info } = colorNames;
+
 const OuterBox = styled.header`
   background: #fff;
   display: flex;
@@ -9,21 +13,26 @@ const OuterBox = styled.header`
   align-items: center;
   height: 80px;
   padding: 0 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
   .right {
     a {
       display: inline-block;
-      border: 1px solid #596b99;
+      border: 1px solid ${info};
       height: 28px;
       border-radius: 3px;
       line-height: 26px;
-      color: #596b99;
+      color: ${info};
       font-weight: 700;
       width: 90px;
       text-align: center;
       margin-left: 5px;
 
       &.on {
-        background: #596b99;
+        background: ${info};
         color: #fff;
       }
     }
