@@ -7,17 +7,23 @@ import { HelmetProvider } from 'react-helmet-async';
 import './i18n';
 import ErrorPage from './pages/commons/ErrorPages';
 import { BrowserRouter } from 'react-router-dom';
+//import UserContext from './modules/User';
+import { UserProvider } from './modules/User';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <ErrorPage>
-          <App />
-        </ErrorPage>
-      </BrowserRouter>
-    </HelmetProvider>
+    {/* <UserContext.Provider value={{ isLogin: false, userInfo: {} }}> */}
+    <UserProvider>
+      <HelmetProvider>
+        <BrowserRouter>
+          <ErrorPage>
+            <App />
+          </ErrorPage>
+        </BrowserRouter>
+      </HelmetProvider>
+    </UserProvider>
+    {/* </UserContext.Provider> */}
   </React.StrictMode>,
 );
 

@@ -5,7 +5,13 @@ import { BigButton } from '../commons/ButtonStyle';
 import { Link } from 'react-router-dom';
 import { FiLock, FiKey, FiUserPlus } from 'react-icons/fi';
 import React, { useRef, useEffect } from 'react';
-import Message from '../commons/Message';
+//import Message from '../commons/Message'; //처음부터 로딩
+//const Message = React.lazy(()=> import('../commons/Message'));
+import loadable from '@loadable/component'; //필요할 때만 로딩되도록 하는 경우 (성능 향상을 위해)
+
+const Message = loadable(() => import('../commons/Message'), {
+  fallback: <div>loading...</div>,
+});
 
 const LoginText = styled(InputText)`
   display: block;
