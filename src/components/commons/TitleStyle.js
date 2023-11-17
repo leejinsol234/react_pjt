@@ -4,7 +4,14 @@ import sizeName from '../../styles/sizes';
 
 const { big, extraBig } = sizeName;
 
-export const MainTitle = styled.h1``;
+export const MainTitle = styled.h1`
+  font-size: ${extraBig};
+  padding: 20px 0;
+  margin: 0 0 25px;
+  color: ${({ color }) => (color ? colorNames[color] : '#000')};
+  border-bottom: 2px solid
+    ${({ color }) => (color ? colorNames[color] : '#000')};
+`;
 export const SubTitle = styled.h2`
   font-size: ${big};
   margin: 0;
