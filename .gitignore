@@ -12,6 +12,7 @@
 /build
 
 # misc
+# 환경변수 설정(설정 파일 분리 가능)
 .DS_Store
 .env.local
 .env.development.local

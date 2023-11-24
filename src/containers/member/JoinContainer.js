@@ -2,9 +2,13 @@ import JoinFrom from '../../components/member/JoinForm';
 import React, { useCallback, useState } from 'react';
 import { produce } from 'immer';
 import { useTranslation } from 'react-i18next';
+import requestJoin from '../../api/member/join';
+import { useNavigate } from 'react-router-dom'; //페이지 이동
 
 const JoinContainer = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     agree: false,
   });
@@ -41,8 +45,17 @@ const JoinContainer = () => {
         return;
       }
       //회원가입 처리
+      requestJoin(form)
+        .then(() => {
+          //회원가입 성공시 처리
+          setForm(() => {}); //양식 초기화
+
+          //로그인 페이지 이동
+          navigate('/login', { replace: true });
+        })
+        .catch((err) => setErrors(() => err.message));
     },
-    [form],
+    [form, t, navigate],
   ); //[]: 변화 감지 기준, mount 됐을 때 최초 1회만
 
   const onChange = useCallback((e) => {
