@@ -78,7 +78,7 @@ const Header = () => {
               to="/join"
               className={({ isActive }) => classNames({ on: isActive })}
             >
-              {t('마이페이지')}
+              {t('회원가입')}
             </NavLink>
           </>
         )}
