@@ -6,6 +6,13 @@ import FrontLayout from './layouts/front/CommonLayout';
 import { Routes, Route } from 'react-router-dom';
 import { useContext } from 'react';
 import UserContext from './modules/User';
+import Logout from './pages/front/member/Logout';
+import MyPage from './pages/front/member/Mypage';
+
+/* 관리자 페이지 */
+import AdminLayout from './layouts/admin/CommonLayout';
+import AdminMain from './pages/admin/Main';
+import AdminConfig from './pages/admin/Config';
 
 const App = () => {
   const {
@@ -18,7 +25,16 @@ const App = () => {
         <Route index element={<Main />} />
         <Route path="/join" element={<Join />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Route>
+
+      {/* 관리자 페이지 */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminMain />} />
+        <Route path="config" element={<AdminConfig />} />
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

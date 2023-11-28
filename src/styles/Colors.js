@@ -1,4 +1,4 @@
-const colors = ['#b0b5c3', '#596b99', '#fff', '#000'];
+const colors = ['#97a4c7', '#596b99', '#fff', '#000'];
 const colorNames = {
   primary: colors[0],
   info: colors[1],

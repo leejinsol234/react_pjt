@@ -9,20 +9,25 @@ import ErrorPage from './pages/commons/ErrorPages';
 import { BrowserRouter } from 'react-router-dom';
 //import UserContext from './modules/User';
 import { UserProvider } from './modules/User';
+import { MainClassProvider } from './modules/mainClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <UserContext.Provider value={{ isLogin: false, userInfo: {} }}> */}
+
     <UserProvider>
       <HelmetProvider>
         <BrowserRouter>
-          <ErrorPage>
-            <App />
-          </ErrorPage>
+          <MainClassProvider>
+            <ErrorPage>
+              <App />
+            </ErrorPage>
+          </MainClassProvider>
         </BrowserRouter>
       </HelmetProvider>
     </UserProvider>
+
     {/* </UserContext.Provider> */}
   </React.StrictMode>,
 );

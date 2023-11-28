@@ -43,7 +43,7 @@ const OuterBox = styled.header`
 const Header = () => {
   const { t } = useTranslation();
   const {
-    state: { isLogin },
+    state: { isLogin, isAdmin },
   } = useContext(UserContext);
   return (
     <OuterBox>
@@ -54,17 +54,25 @@ const Header = () => {
         {isLogin ? (
           <>
             <NavLink
-              to="/login"
+              to="/logout"
               className={({ isActive }) => classNames({ on: isActive })}
             >
               {t('로그아웃')}
             </NavLink>
             <NavLink
-              to="/join"
+              to="/mypage"
               className={({ isActive }) => classNames({ on: isActive })}
             >
               {t('마이페이지')}
             </NavLink>
+            {isAdmin && (
+              <NavLink
+                to="/admin"
+                className={({ isActive }) => classNames({ on: isActive })}
+              >
+                {t('사이트 관리')}
+              </NavLink>
+            )}
           </>
         ) : (
           <>

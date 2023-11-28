@@ -9,8 +9,10 @@ import { requestLogin } from '../../api/member/login';
 const LoginContainer = () => {
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({});
+
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const {
     action: { updateUserInfo },
   } = useContext(UserContext);
@@ -24,14 +26,14 @@ const LoginContainer = () => {
       setErrors(() => _errors);
 
       /* 필수항목 검증S */
-      const requiredField = {
+      const requiredFields = {
         email: t('NotBlank_email'),
         password: t('NotBlank_password'),
       };
 
-      for (const field in requiredField) {
+      for (const field in requiredFields) {
         if (!form[field] || !form[field].trim()) {
-          _errors[field] = requiredField[field];
+          _errors[field] = requiredFields[field];
           hasError = true;
         }
       }
@@ -54,6 +56,7 @@ const LoginContainer = () => {
           setForm(() => {});
 
           //로그인 상태(isLogin -> true), userInfo에 회원정보 업데이트
+          updateUserInfo();
 
           //페이지 이동
           navigate('/', { replace: true }); //기록 없이 이동
@@ -73,7 +76,7 @@ const LoginContainer = () => {
 
     setForm((form) => ({
       ...form,
-      [target]: target.value,
+      [target.name]: target.value,
     }));
   }, []);
 

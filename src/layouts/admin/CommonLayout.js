@@ -1,16 +1,19 @@
 import Header from '../../outlines/admin/Header';
-import Footer from '../../outlines/admin/Footer';
 import { Outlet } from 'react-router-dom';
+import AdminOnly from '../../components/authority/AdminOnly';
+import SideMenu from '../../outlines/admin/SideMenu';
 
 const CommonLayout = () => {
   return (
-    <>
+    <AdminOnly>
       <Header />
-      <main>
-        <Outlet />
+      <main className="admin_page">
+        <SideMenu />
+        <section>
+          <Outlet />
+        </section>
       </main>
-      <Footer />
-    </>
+    </AdminOnly>
   );
 };
 
